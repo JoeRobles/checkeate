@@ -1,0 +1,53 @@
+{% extends 'admin-layout.html.twig' %}
+
+{% block page_title %}Detalle de usuario{% endblock %}
+
+{% block page_content %}
+    <div class="box">
+        <div class="box-body">
+            <table class="table table-bordered dataTable">
+                <tr>
+                    <th>Id</th>
+                    <td>{{ user.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre de usuario</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th>Correo electrónico</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ user.firstname }}</td>
+                </tr>
+                <tr>
+                    <th>Apellido</th>
+                    <td>{{ user.lastname }}</td>
+                </tr>
+                <tr>
+                    <th>Imagen</th>
+                    <td><img src="/{{ user.uploaddir }}/{{ user.path }}"></td>
+                </tr>
+                <tr>
+                    <th>Estado</th>
+                    <td>
+                        {% if user.status  == 1 %}
+                            {{ 'Activo' }}
+                        {% else %}
+                            {{ 'Inactivo' }}
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="box-footer">
+            <a class="btn btn-default pull-left" href="{{ path('user_index') }}">Volver al listado</a>
+            <a class="btn btn-primary pull-left"  href="{{ path('user_edit', { 'id': user.id }) }}">Editar</a>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

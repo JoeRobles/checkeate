@@ -1,0 +1,22 @@
+{% extends 'admin-layout.html.twig' %}
+
+{% block page_content -%}
+    {% trans_default_domain 'FOSUserBundle' %}
+    {% if invalid_username is defined %}
+        <div class="alert alert-danger fade in">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong>Error</strong> {{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}
+        </div>
+    {% endif %}
+    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="username">{{ 'resetting.request.username'|trans }}</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="username" name="username" required="required" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary"type="submit">{{ 'resetting.request.submit'|trans }}</button>
+        </div>
+    </form>
+{% endblock %}

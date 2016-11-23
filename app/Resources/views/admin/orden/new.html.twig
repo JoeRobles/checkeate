@@ -1,0 +1,29 @@
+{% extends 'admin-layout.html.twig' %}
+
+{% block page_title %}Nueva orden{% endblock %}
+
+{% block page_content %}
+    <div class="box">
+        <div class="box-body">
+            <form action="{{ form.vars.action }}" class="form-horizontal" {{ form_enctype(form) }} method="{{ form.vars.method }}" name="{{ form.vars.id }}" role="form">
+                {{ form_errors(form) }}
+                <div class="form-group{% if form.subFormFactor.vars.errors[0].message is defined %} has-error{% endif %}">
+                    {{ form_label(form.subFormFactor, 'Producto', {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.subFormFactor, {'attr': {'class': 'form-control', 'required': true} }) }}
+                        {% if form.subFormFactor.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                            {{ form.subFormFactor.vars.errors[0].message }}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <button class="btn btn-primary entity-submit pull-left" id="{{ form.vars.id }}_submit" type="submit">Nuevo</button>
+                {{ form_widget(form._token) }}
+            </form>
+        </div>
+        <div class="box-footer">
+            <a class="btn btn-default pull-left" href="{{ path('orden_index') }}">Volver al listado</a>
+        </div>
+    </div>
+{% endblock %}

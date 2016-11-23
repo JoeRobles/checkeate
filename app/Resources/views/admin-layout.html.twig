@@ -1,0 +1,149 @@
+{% extends 'layout/base-layout.html.twig' %}
+
+{% block stylesheets -%}
+    {{ parent() }}
+
+    {% stylesheets output='css/admin-layout.css' filter='cssrewrite' debug=false
+    'css/admin-main.css'
+    -%}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+    {% endstylesheets %}
+
+{% endblock %}
+
+{% block body -%}
+    <div class="wrapper">
+        {% block avanzu_admin_header %}
+            <header class="main-header">
+                {% block avanzu_logo %}
+                    <a href="{{ path('admin') }}" class="logo">
+                        Checkeate Admin
+                    </a>
+                {% endblock %}
+                <nav class="navbar navbar-static-top" role="navigation">
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    {% endif %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                {% block avanzu_navbar %}
+                                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
+                                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
+                                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
+                                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
+                                {% endblock %}
+                                <li class="dropdown user user-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        <img src="/{{ app.user.uploaddir }}/{{ app.user.path }}" class="user-image" alt="User Image">
+                                        <span class="hidden-xs">{{ app.user.firstname }} {{ app.user.lastname }}</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <!-- User image -->
+                                        <li class="user-header">
+                                            <img src="/{{ app.user.uploaddir }}/{{ app.user.path }}" class="img-circle" alt="User Image">
+                                            <p>
+                                                {{ app.user.firstname }} {{ app.user.lastname }}
+                                                <small>Último loggeo: {{ app.user.lastLogin | date }}</small>
+                                            </p>
+                                        </li>
+                                        <li class="user-body">
+                                            <div class="row">
+                                                <div class="col-xs-4 text-center">
+                                                    <a href="{{ path('fos_user_profile_show') }}" class="btn btn-info btn-flat">Perfil</a>
+                                                </div>
+                                                <div class="col-xs-4 text-center">
+                                                    <a href="{{ path('fos_user_change_password') }}" class="btn btn-warning btn-flat">Cambiar contraseña</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="user-footer">
+                                            <div class="pull-right">
+                                                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger btn-flat">Salir</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </nav>
+            </header>
+        {% endblock %}
+        {% if is_granted("ROLE_ADMIN") %}
+        <aside class="main-sidebar sidebar-offcanvas">
+            <section class="sidebar">
+                {% block avanzu_sidebar %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
+                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+                    {% endif %}
+                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
+                {% endblock %}
+                <div class="user-panel">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <div class="pull-left image">
+                        <img src="/{{ app.user.uploaddir }}/{{ app.user.path }}" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>{{ app.user.firstname }} {{ app.user.lastname }}</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                {% endif %}
+                </div>
+                <ul class="sidebar-menu">
+                    {% set file_array = ['file_index', 'file_show', 'file_edit', 'file_new'] %}
+                    <li{% if app.request.get('_route') in file_array %} class="active"{% endif %}><a href="{{ path('file_index') }}"><i class="fa fa-file"></i> <span>Archivos</span></a></li>
+                    {% set user_array = ['user_index', 'user_show', 'user_edit', 'user_new'] %}
+                    <li{% if app.request.get('_route') in user_array %} class="active"{% endif %}><a href="{{ path('user_index') }}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+                    {% set orden_array = ['orden_index', 'orden_show', 'orden_edit', 'orden_new'] %}
+                    <li{% if app.request.get('_route') in orden_array %} class="active"{% endif %}><a href="{{ path('orden_index') }}"><i class="fa fa-shopping-cart"></i> <span>Órdenes</span></a></li>
+                </ul>
+            </section>
+        </aside>
+        {% endif %}
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    {% block page_title %}Blank page{% endblock %}
+                    <small>{% block page_subtitle %}{% endblock %}</small>
+                </h1>
+                {% block avanzu_breadcrumb %}
+                    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+                {% endblock %}
+            </section>
+
+            {% if app.request.hasPreviousSession %}
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% set thistype = type %}
+                    {% if type == 'success' %}
+                        {% set thistype = 'check' %}
+                    {% elseif type == 'danger' %}
+                        {% set thistype = 'ban' %}
+                    {% endif %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-{{ thistype }}"></i> {{ type | capitalize }}!</h4>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+
+            <section class="content">
+                {% block page_content %}{% endblock %}
+            </section>
+        </div>
+        {% block avanzu_admin_footer %}
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2017 <a href="http://www.checkeate.com">Checkeate</a>.</strong> Todos los derechos reservados.
+                <div class="pull-right hidden-xs">
+                    <b>Version:</b> {{ version }} | <b>Built by:</b> {{ builtby }}
+                </div>
+            </footer>
+        {% endblock %}
+    </div>
+{% endblock %}

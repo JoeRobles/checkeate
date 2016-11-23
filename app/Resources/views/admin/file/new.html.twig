@@ -1,0 +1,62 @@
+{% extends 'admin-layout.html.twig' %}
+
+{% block page_title %}Nuevo archivo{% endblock %}
+
+{% block page_content %}
+    <div class="box">
+        <div class="box-body">
+            <form action="{{ form.vars.action }}" class="form-horizontal" {{ form_enctype(form) }} method="{{ form.vars.method }}" name="{{ form.vars.id }}" role="form">
+                {{ form_errors(form) }}
+                <div class="form-group{% if form.name.vars.errors[0].message is defined %} has-error{% endif %}">
+                    {{ form_label(form.name, 'Nombre', {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control'} }) }}
+                        {% if form.name.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                            {{ form.name.vars.errors[0].message }}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group{% if form.type.vars.errors[0].message is defined %} has-error{% endif %}">
+                    {{ form_label(form.type, 'Tipo', {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.type, {'attr': {'class': 'form-control'} }) }}
+                        {% if form.type.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                            {{ form.type.vars.errors[0].message }}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group{% if form.uri.vars.errors[0].message is defined %} has-error{% endif %}">
+                    {{ form_label(form.uri, 'Uri', {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.uri, {'attr': {'class': 'form-control'} }) }}
+                        {% if form.uri.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                            {{ form.uri.vars.errors[0].message }}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group{% if form.file.vars.errors[0].message is defined %} has-error{% endif %}">
+                    {{ form_label(form.file, 'Subir', {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.file, {'attr': {'class': 'form-control'} }) }}
+                        {% if form.file.vars.errors[0].message is defined %}
+                            <span class="help-block">
+                            {{ form.file.vars.errors[0].message }}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <button class="btn btn-primary entity-submit pull-left" id="{{ form.vars.id }}_submit" type="submit">Nuevo</button>
+                {{ form_widget(form._token) }}
+            </form>
+        </div>
+        <div class="box-footer">
+            <a class="btn btn-default pull-left" href="{{ path('file_index') }}">Volver al listado</a>
+        </div>
+    </div>
+{% endblock %}

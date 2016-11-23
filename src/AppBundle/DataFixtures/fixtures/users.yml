@@ -1,0 +1,26 @@
+User:
+    joe:
+        firstname: Joe
+        lastname: Robles
+        username: joe
+        role: ROLE_SUPER_ADMIN
+        path: ae9423c0af7f1f2dccedec33a8440b53842eabd0.jpeg
+        original: joe-robles.jpg
+        username_canonical: Joe
+        email: joe@colldev.com
+        email_canonical: joe@colldev.com
+        enabled: 1
+        plain_password: 123456
+    
+    luis:
+        firstname: Luis
+        lastname: Pariona
+        username: luis.pariona
+        role: ROLE_ADMIN
+        path: 9033fca1e1afbf24b8ed8bc892e04a51f66fdf91.jpeg
+        original: user2-160x160.jpg
+        username_canonical: Luis.Pariona
+        email: luis.pariona@gmail.com
+        email_canonical: luis.pariona@gmail.com
+        enabled: 1
+        plain_password: 123456

@@ -1,0 +1,11 @@
+{% extends 'admin-layout.html.twig' %}
+
+{% block page_title %}Email sent successfully{% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block page_content %}
+    <p>
+        {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime}) }}
+    </p>
+{% endblock %}

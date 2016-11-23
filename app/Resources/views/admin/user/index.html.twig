@@ -1,0 +1,50 @@
+{% extends 'admin-layout.html.twig' %}
+
+{% block page_title %}Listado de usuarios{% endblock %}
+
+{% block page_content %}
+    <div class="box">
+        <div class="box-header">
+            <a class="btn btn-success" href="{{ path('user_new') }}">
+                <i class="fa fa-fw fa-plus"></i> Crear
+            </a>
+        </div>
+        <div class="box-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre de usuario</th>
+                        <th>Nombres</th>
+                        <th>Apellido</th>
+                        <th>Imagen</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.lastname }}</td>
+                        <td><img class="user-image" src="/{{ user.uploaddir }}/{{ user.path }}"></td>
+                        <td>
+                            {% if user.status  == 1 %}
+                                {{ 'Activo' }}
+                            {% else %}
+                                {{ 'Inactivo' }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}"> <i class="fa fa-fw fa-eye"></i></a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}"> <i class="fa fa-fw fa-edit"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

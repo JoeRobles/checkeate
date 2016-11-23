@@ -1,0 +1,50 @@
+{% extends 'admin-layout.html.twig' %}
+
+{% block page_title %}Listado de órdenes{% endblock %}
+
+{% block page_content %}
+    <div class="box">
+        <div class="box-header">
+            <a class="btn btn-success" href="{{ path('orden_new') }}">
+                <i class="fa fa-fw fa-plus"></i> Crear
+            </a>
+        </div>
+        <div class="box-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Producto</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for orden in ordens %}
+                    <tr>
+                        <td><a href="{{ path('orden_show', { 'id': orden.id }) }}">{{ orden.id }}</a></td>
+                        <td>
+                            {{ orden.subFormFactor }}
+                        </td>
+                        <td>
+                            {% if orden.status  == 0 %}
+                                {{ 'Pendiente' }}
+                            {% elseif orden.status == 1 %}
+                                {{ 'Entregado' }}
+                            {% elseif orden.status == 2 %}
+                                {{ 'Cerrado' }}
+                            {% elseif orden.status == 3 %}
+                                {{ 'Cancelado' }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('orden_show', { 'id': orden.id }) }}"> <i class="fa fa-fw fa-eye"></i></a>
+                            <a href="{{ path('orden_edit', { 'id': orden.id }) }}"> <i class="fa fa-fw fa-edit"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
