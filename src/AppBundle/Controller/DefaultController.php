@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class DefaultController extends Controller
 {
     /**
@@ -23,13 +22,5 @@ class DefaultController extends Controller
     public function adminAction(Request $request)
     {
         return $this->render('admin/admin.html.twig', array());
-    }
-
-    /**
-     * @Route("/contacto", name="contact")
-     */
-    public function contactAction(Request $request)
-    {
-        return $this->render('default/contact.html.twig', array());
     }
 }

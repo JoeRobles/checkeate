@@ -1,27 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Checkeate - {% block title %}{% endblock %}</title>
-        {% block stylesheets %}
-            {% stylesheets output='css/base.css' filter='cssrewrite' debug=false
-            'css/bootstrap.min.css'
-            -%}
-            <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
-            {% endstylesheets %}
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta charset="UTF-8"/>
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     </head>
 
     <body>
-
-        {% block javascripts %}
-            {% javascripts output='js/base.js' debug=false
-            'js/jquery.min.js'
-            'js/bootstrap.min.js'
-            -%}
-                <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-        {% endblock %}
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

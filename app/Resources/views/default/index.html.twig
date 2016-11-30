@@ -1,115 +1,87 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{% endblock %}
-
 {% block content %}
-
-<!-- Slider -->
-		<div id="carousel-example" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-example" data-slide-to="1"></li>
-				<li data-target="#carousel-example" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="/template/images/banner.png" />
-					<div class="carousel-caption">
-						<div class="row">
-							<div class="col-md-7"></div>
-							<div class="col-md-5">
-								<h1 class="title-Slider text-left"><span class="yellow">checkeate,</span> una pc para</h1>
-								<p class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non deserunt perferendis numquam rerum deleniti nemo possimus, quaerat temporibus at dignissimos, quasi modi qui omnis, quas aliquam atque libero! Officia, vel!</p>
-								<p class="text-left"><a class="btn-Header">Case Tower</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<img src="/template/images/banner.png" />
-					<div class="carousel-caption">
-						<div class="row">
-							<div class="col-md-7"></div>
-							<div class="col-md-5">
-								<h1 class="title-Slider text-left"><span class="yellow">checkeate,</span> una pc para</h1>
-								<p class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non deserunt perferendis numquam rerum deleniti nemo possimus, quaerat temporibus at dignissimos, quasi modi qui omnis, quas aliquam atque libero! Officia, vel!</p>
-								<p class="text-left"><a class="btn-Header">Case Tower</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<img src="/template/images/banner.png" />
-					<div class="carousel-caption">
-						<div class="row">
-							<div class="col-md-7"></div>
-							<div class="col-md-5">
-								<h1 class="title-Slider text-left"><span class="yellow">checkeate,</span> una pc para</h1>
-								<p class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non deserunt perferendis numquam rerum deleniti nemo possimus, quaerat temporibus at dignissimos, quasi modi qui omnis, quas aliquam atque libero! Officia, vel!</p>
-								<p class="text-left"><a class="btn-Header">Case Tower</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a class="left carousel-control" href="#carousel-example" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a class="right carousel-control" href="#carousel-example" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
-		</div>
-		<!-- /Slider -->
-		<div class="container-fluid Productos">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-15 col-sm-3 animated bounceInLeft">
-						<img class="Chassis hvr-grow" src="/template/images/case.png" alt="">
-						<div class="btn-Case-Container">
-							<a href="" class="btn-Case">Case Tower</a>
-						</div>
-					</div>
-					<div class="col-md-15 col-sm-3 animated bounceInDown">
-						<img class="Chassis hvr-grow" src="/template/images/case.png" alt="">
-						<div class="btn-Case-Container">
-							<a href="" class="btn-Case">Case Tower</a>
-						</div>
-					</div>
-					<div class="col-md-15 col-sm-3 animated bounceInLeft">
-						<img class="Chassis hvr-grow" src="/template/images/case.png" alt="">
-						<div class="btn-Case-Container">
-							<a href="" class="btn-Case">Case Tower</a>
-						</div>
-					</div>
-					<div class="col-md-15 col-sm-3 animated bounceInDown">
-						<img class="Chassis hvr-grow" src="/template/images/case.png" alt="">
-						<div class="btn-Case-Container">
-							<a href="" class="btn-Case">Case Tower</a>
-						</div>
-					</div>
-					<div class="col-md-15 col-sm-3 animated bounceInLeft">
-						<img class="Chassis hvr-grow" src="/template/images/case.png" alt="">
-						<div class="btn-Case-Container">
-							<a href="" class="btn-Case">Case Tower</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Publicidad -->
-		<div class="Publicidad">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<img class="img-responsive center-block Publi" src="/template/images/publi1.png" alt="">
-					</div>
-					<div class="col-md-6">
-						<img class="img-responsive center-block Publi" src="/template/images/publi2.png" alt="">
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /Publicidad -->
-
-
+    <div class="row cabecera">
+        <div class="col-md-12">
+            <table width="100%" border="0">
+                <tr>
+                    <td><img src="Imagenes/barra_superiorweb.png" width="100%" height="" alt=""/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Desplegar navegación</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="Imagenes/logo_ch.png" width="100%">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="nosotros.html">Nosotros</a></li>
+                            <li><a href="nosotros.html">Acerca</a></li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                    Productos <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="colelap_android.html">Colelap Android</a></li>
+                                    <li><a href="icolelap.html">Icolelap</a></li>
+                                    <li><a href="colelap_ipad.html">Colelap Ipad</a></li>
+                                    <li><a href="gastrectomia.html">Gastrectomia app</a></li>
+                                    <li><a href="igastrectomy.html">iGastrectomy</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                    Servicios <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="https://www.facebook.com/medicine.technology">Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/channel/UCqVHGwQCmmGa2hjS7ydN4sQ">
+                                            Youtube
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/_checkeate">Twitter</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p><img src="Imagenes/IMG_7229.PNG" width="170" height="290" alt=""/></p>
+            <p></p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>iCOLELAP</h1>
+                    <p>Aplicativo desarrollado para aprender sobre el procedimiento de la cirugía por
+                        patología de vesícula biliar: COLECISTECTOMÍA LAPAROSCÓPICA. El aplicativo esta
+                        disponible para dispositivos con el sistema operativo IOS, su costo: Gratuito.</p>
+                    <a href="https://appsto.re/pe/XQSw6.i"><img src="Imagenes/app_store.jpg" width="230"></a>
+                </div>
+                <div class="col-md-12"></div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
