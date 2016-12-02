@@ -71,8 +71,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <p class="pull-right"><img src="{{ asset('images/portada-libro.png') }}" height="290" alt="Libro"></p>
+        <div class="col-md-4">
+            <p><img src="{{ asset('images/portada-libro.png') }}" height="290" alt="Libro"></p>
+            <p></p>
         </div>
         <div class="col-md-8">
             <div class="row">
@@ -111,27 +112,27 @@
             if (Culqi.token) {
                 console.log(Culqi.token.id);
                 console.log(Culqi.token);
-            } else{
+            } else {
                 console.log(Culqi.error);
                 alert(Culqi.error.mensaje);
             }
 
-            if(Culqi.error){
+            if (Culqi.error){
                 console.log(Culqi.error);
                 alert(Culqi.error.mensaje);
-            } else{
+            } else {
                 $.post(
-                    "/verify", // Ruta hacia donde enviaremos el token vía POST
-                    {token: Culqi.token.id},
-                    function(data, status){
-                        if (data=='ok') {
-                            alert('¡Todo en orden! Token enviado.');
-                        } else {
-                            alert('Error');
+                        "/verify", // Ruta hacia donde enviaremos el token vía POST
+                        { token: Culqi.token.id },
+                        function(data, status){
+                            if (data === 'ok') {
+                                alert('¡Todo en orden! Token enviado.');
+                            } else {
+                                alert('Error');
+                            }
                         }
-                    }
                 );
             }
-        };
+        }
     </script>
 {% endblock %}

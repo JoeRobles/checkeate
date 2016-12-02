@@ -12,3 +12,4 @@ composer.phar
 build/logs/
 build/coverage/
 *.php~
+bower_components/

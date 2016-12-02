@@ -33,7 +33,7 @@ class DefaultController extends Controller
         $culqi = new Culqi(array('api_key' => $this->get('secret_api_key')));
         $culqi->setEnv("INTEG");
 
-        $request->request->get('category');
+        $request->request->get('token');
 
         $pedidoId = sha1(uniqid(mt_rand(), true));
 
