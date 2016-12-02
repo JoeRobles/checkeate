@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block stylesheets %}
+    {% stylesheets output='css/main.css' filter='cssrewrite' debug=false
+    'css/bootstrap.min.css'
+    'css/styles.css' -%}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+    {% endstylesheets %}
+{% endblock %}
 
 {% block body %}
+    <div class="container">
     {% block content %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://integ-pago.culqi.com/js/v1"></script>
+    <script>
+        Culqi.codigoComercio = 'test_Y1RwBEkL4Yzc';
+    </script>
+    {% javascripts output='js/main.js' debug=false
+    'js/jquery.min.js'
+    'js/bootstrap.min.js'
+    'js/scripts.js' -%}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

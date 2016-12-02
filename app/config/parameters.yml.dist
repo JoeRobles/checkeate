@@ -21,3 +21,4 @@ parameters:
     version: 0.0.0
     builtby: Jenkins
     admin_skin: 'skin-blue'
+    secret_api_key: SECRET_API_KEY

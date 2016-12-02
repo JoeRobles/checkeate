@@ -1,11 +1,15 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}{% endblock %}
+
 {% block content %}
     <div class="row cabecera">
         <div class="col-md-12">
             <table width="100%" border="0">
                 <tr>
-                    <td><img src="Imagenes/barra_superiorweb.png" width="100%" height="" alt=""/></td>
+                    <td>
+                        <img src="{{ asset('images/barra_superiorweb.png') }}" width="100%" height="" alt="">
+                    </td>
                 </tr>
             </table>
         </div>
@@ -21,25 +25,25 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">
-                            <img src="Imagenes/logo_ch.png" width="100%">
+                        <a class="navbar-brand" href="http://www.checkeate.com/index.html">
+                            <img src="{{ asset('images/logo_ch.png') }}" width="100%">
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="nosotros.html">Nosotros</a></li>
-                            <li><a href="nosotros.html">Acerca</a></li>
+                            <li><a href="http://www.checkeate.com/index.html">Home</a></li>
+                            <li><a href="http://www.checkeate.com/nosotros.html">Nosotros</a></li>
+                            <li><a href="http://www.checkeate.com/nosotros.html">Acerca</a></li>
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                                     Productos <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="colelap_android.html">Colelap Android</a></li>
-                                    <li><a href="icolelap.html">Icolelap</a></li>
-                                    <li><a href="colelap_ipad.html">Colelap Ipad</a></li>
-                                    <li><a href="gastrectomia.html">Gastrectomia app</a></li>
-                                    <li><a href="igastrectomy.html">iGastrectomy</a></li>
+                                    <li><a href="http://www.checkeate.com/colelap_android.html">Colelap Android</a></li>
+                                    <li><a href="http://www.checkeate.com/icolelap.html">Icolelap</a></li>
+                                    <li><a href="http://www.checkeate.com/colelap_ipad.html">Colelap Ipad</a></li>
+                                    <li><a href="http://www.checkeate.com/gastrectomia.html">Gastrectomia app</a></li>
+                                    <li><a href="http://www.checkeate.com/igastrectomy.html">iGastrectomy</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -67,21 +71,67 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <p><img src="Imagenes/IMG_7229.PNG" width="170" height="290" alt=""/></p>
-            <p></p>
+        <div class="col-md-3">
+            <p class="pull-right"><img src="{{ asset('images/portada-libro.png') }}" height="290" alt="Libro"></p>
         </div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>iCOLELAP</h1>
-                    <p>Aplicativo desarrollado para aprender sobre el procedimiento de la cirugía por
-                        patología de vesícula biliar: COLECISTECTOMÍA LAPAROSCÓPICA. El aplicativo esta
-                        disponible para dispositivos con el sistema operativo IOS, su costo: Gratuito.</p>
-                    <a href="https://appsto.re/pe/XQSw6.i"><img src="Imagenes/app_store.jpg" width="230"></a>
+                    <h1>Excepteur sint</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <button id="buy" class="btn btn-primary btn-lg">Comprar ahora</button>
                 </div>
                 <div class="col-md-12"></div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        Culqi.configurar({
+            nombre: 'Checkeate Store',
+            orden: 'x123131',
+            moneda: 'PEN',
+            descripcion: 'Pago del Libro',
+            monto: 200,
+            guardar: false
+        });
+
+        $('#buy').on('click', function (e) {
+            Culqi.abrir();
+            e.preventDefault();
+        });
+
+        function culqi() {
+            if (Culqi.token) {
+                console.log(Culqi.token.id);
+                console.log(Culqi.token);
+            } else{
+                console.log(Culqi.error);
+                alert(Culqi.error.mensaje);
+            }
+
+            if(Culqi.error){
+                console.log(Culqi.error);
+                alert(Culqi.error.mensaje);
+            } else{
+                $.post(
+                    "/verify", // Ruta hacia donde enviaremos el token vía POST
+                    {token: Culqi.token.id},
+                    function(data, status){
+                        if (data=='ok') {
+                            alert('¡Todo en orden! Token enviado.');
+                        } else {
+                            alert('Error');
+                        }
+                    }
+                );
+            }
+        };
+    </script>
 {% endblock %}
