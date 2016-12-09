@@ -3,5 +3,38 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-    {{  }}
+    {% if cargo is defined %}
+    <h2>Compra Exitosa</h2>
+    <dl class="dl-horizontal">
+        <dt>Descripcion:</dt>
+        <dd>{{ cargo.descripcion }}</dd>
+        <dt>Monto:</dt>
+        <dd>{{ cargo.monto }}</dd>
+        <dt>Creado:</dt>
+        <dd>{{ cargo.creado }}</dd>
+        {#<dt>Pedido:</dt>
+        <dd>{{ cargo.pedido }}</dd>
+        <dt>Comisión:</dt>
+        <dd>{{ cargo.comision }}</dd>
+        <dt>Moneda:</dt>
+        <dd>{{ cargo.moneda }}</dd>#}
+        <dt>Marca:</dt>
+        <dd>{{ cargo.token.tarjeta.marca }}</dd>
+        <dt>Número:</dt>
+        <dd>{{ cargo.token.tarjeta.numero }}</dd>
+        <dt>Nombre:</dt>
+        <dd>{{ cargo.token.tarjeta.nombre }}</dd>
+        <dt>Apellido:</dt>
+        <dd>{{ cargo.token.tarjeta.apellido }}</dd>
+        <dt>Emisor:</dt>
+        <dd>{{ cargo.token.tarjeta.emisor }}</dd>
+        <dt>País:</dt>
+        <dd>{{ cargo.token.tarjeta.pais }}</dd>
+    </dl>
+    <a href="{{ path('libro') }}" class="btn btn-primary">Descarga</a>
+    {% elseif mensaje is defined %}
+        {{ mensaje }}
+    {% else %}
+        <p>Error inesperado</p>
+    {% endif %}
 {% endblock %}

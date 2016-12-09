@@ -94,14 +94,15 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-        Culqi.configurar({
+        var datos = {
             nombre: 'Checkeate Store',
-            orden: 'x123131',
+            orden: '{{ orden }}',
             moneda: 'PEN',
             descripcion: 'Pago del Libro',
             monto: 200,
             guardar: false
-        });
+        };
+        Culqi.configurar(datos);
 
         $('#buy').on('click', function (e) {
             Culqi.abrir();
@@ -110,29 +111,35 @@
 
         function culqi() {
             if (Culqi.token) {
-                console.log(Culqi.token.id);
-                console.log(Culqi.token);
             } else {
-                console.log(Culqi.error);
                 alert(Culqi.error.mensaje);
             }
 
             if (Culqi.error){
-                console.log(Culqi.error);
                 alert(Culqi.error.mensaje);
             } else {
-                $.post(
-                        "/verify", // Ruta hacia donde enviaremos el token vía POST
-                        { token: Culqi.token.id },
-                        function(data, status){
-                            if (data === 'ok') {
-                                alert('¡Todo en orden! Token enviado.');
-                            } else {
-                                alert('Error');
-                            }
-                        }
-                );
+                datos.nombre = Culqi.token.tarjeta.nombre;
+                datos.apellido = Culqi.token.tarjeta.apellido;
+                datos.correo_electronico = Culqi.token.correo_electronico;
+
+                fillForm(Culqi, datos);
+
+                function fillForm(Culqi, datos) {
+                    console.log('datos');
+                    console.log(datos);
+                    console.log('JSON.stringify(datos)');
+                    console.log(JSON.stringify(datos));
+                    $('#token').val(Culqi.token.id);
+                    $('#datos').val(JSON.stringify(datos));
+                    setTimeout(function(){
+                        $('#pagar').submit();
+                    }, 500);
+                }
             }
         }
     </script>
+    <form id="pagar" method="post" action="{{ path('verify') }}" class="hidden">
+        <input id="token" type="hidden" name="token" value="">
+        <input id="datos" type="hidden" name="datos" value="">
+    </form>
 {% endblock %}
