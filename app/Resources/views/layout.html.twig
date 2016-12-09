@@ -10,6 +10,73 @@
 
 {% block body %}
     <div class="container">
+        <div class="row cabecera">
+            <div class="col-md-12">
+                <table width="100%" border="0">
+                    <tr>
+                        <td>
+                            <img src="{{ asset('images/barra_superiorweb.png') }}" width="100%" height="" alt="">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Desplegar navegación</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="http://www.checkeate.com/index.html">
+                                <img src="{{ asset('images/logo_ch.png') }}" width="100%">
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="http://www.checkeate.com/index.html">Home</a></li>
+                                <li><a href="http://www.checkeate.com/nosotros.html">Nosotros</a></li>
+                                <li><a href="http://www.checkeate.com/nosotros.html">Acerca</a></li>
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                        Productos <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="http://www.checkeate.com/colelap_android.html">Colelap Android</a></li>
+                                        <li><a href="http://www.checkeate.com/icolelap.html">Icolelap</a></li>
+                                        <li><a href="http://www.checkeate.com/colelap_ipad.html">Colelap Ipad</a></li>
+                                        <li><a href="http://www.checkeate.com/gastrectomia.html">Gastrectomia app</a></li>
+                                        <li><a href="http://www.checkeate.com/igastrectomy.html">iGastrectomy</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                        Servicios <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="https://www.facebook.com/medicine.technology">Facebook</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.youtube.com/channel/UCqVHGwQCmmGa2hjS7ydN4sQ">
+                                                Youtube
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/_checkeate">Twitter</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
     {% block content %}{% endblock %}
     </div>
 {% endblock %}

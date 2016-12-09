@@ -3,38 +3,51 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-    {% if cargo is defined %}
-    <h2>Compra Exitosa</h2>
-    <dl class="dl-horizontal">
-        <dt>Descripcion:</dt>
-        <dd>{{ cargo.descripcion }}</dd>
-        <dt>Monto:</dt>
-        <dd>{{ cargo.monto }}</dd>
-        <dt>Creado:</dt>
-        <dd>{{ cargo.creado }}</dd>
-        {#<dt>Pedido:</dt>
-        <dd>{{ cargo.pedido }}</dd>
-        <dt>Comisión:</dt>
-        <dd>{{ cargo.comision }}</dd>
-        <dt>Moneda:</dt>
-        <dd>{{ cargo.moneda }}</dd>#}
-        <dt>Marca:</dt>
-        <dd>{{ cargo.token.tarjeta.marca }}</dd>
-        <dt>Número:</dt>
-        <dd>{{ cargo.token.tarjeta.numero }}</dd>
-        <dt>Nombre:</dt>
-        <dd>{{ cargo.token.tarjeta.nombre }}</dd>
-        <dt>Apellido:</dt>
-        <dd>{{ cargo.token.tarjeta.apellido }}</dd>
-        <dt>Emisor:</dt>
-        <dd>{{ cargo.token.tarjeta.emisor }}</dd>
-        <dt>País:</dt>
-        <dd>{{ cargo.token.tarjeta.pais }}</dd>
-    </dl>
-    <a href="{{ path('libro') }}" class="btn btn-primary">Descarga</a>
-    {% elseif mensaje is defined %}
-        {{ mensaje }}
-    {% else %}
-        <p>Error inesperado</p>
-    {% endif %}
+    <div class="row">
+        <div class="col-md-4">
+            <p><img src="{{ asset('images/portada-libro.png') }}" height="290" alt="Libro"></p>
+            <p></p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if cargo is defined %}
+                        <h2>Compra Exitosa</h2>
+                        <dl class="dl-horizontal">
+                            <dt>Descripcion:</dt>
+                            <dd>{{ cargo.descripcion }}</dd>
+                            <dt>Monto:</dt>
+                            <dd>S/{{ (cargo.monto / 100) | number_format(2, '.', ',') }}</dd>
+                            <dt>Creado:</dt>
+                            <dd>{{ cargo.creado|date('d/m/Y H:i') }}</dd>
+                            {#<dt>Pedido:</dt>
+                            <dd>{{ cargo.pedido }}</dd>
+                            <dt>Comisión:</dt>
+                            <dd>{{ cargo.comision }}</dd>
+                            <dt>Moneda:</dt>
+                            <dd>{{ cargo.moneda }}</dd>#}
+                            <dt>Marca:</dt>
+                            <dd>{{ cargo.token.tarjeta.marca }}</dd>
+                            <dt>Número:</dt>
+                            <dd>{{ cargo.token.tarjeta.numero }}</dd>
+                            <dt>Nombre:</dt>
+                            <dd>{{ cargo.token.tarjeta.nombre }}</dd>
+                            <dt>Apellido:</dt>
+                            <dd>{{ cargo.token.tarjeta.apellido }}</dd>
+                            <dt>Emisor:</dt>
+                            <dd>{{ cargo.token.tarjeta.emisor }}</dd>
+                            <dt>País:</dt>
+                            <dd>{{ cargo.token.tarjeta.pais }}</dd>
+                        </dl>
+                        <a href="{{ path('libro') }}" class="btn btn-primary btn-lg">Descarga</a>
+                    {% elseif mensaje is defined %}
+                        {{ mensaje }}
+                    {% else %}
+                        <p>Error inesperado</p>
+                    {% endif %}
+                </div>
+                <div class="col-md-12"></div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
