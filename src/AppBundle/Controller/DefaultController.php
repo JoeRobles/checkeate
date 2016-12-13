@@ -43,7 +43,7 @@ class DefaultController extends Controller
         $culqi = new Culqi(array(
             'api_key' => $this->container->getParameter('secret_api_key')
         ));
-        $culqi->setEnv("INTEG");
+        $culqi->setEnv("PRODUC");
         $token = $request->request->get('token');
         $datos = $request->request->get('datos');
         $datos = json_decode($datos);
