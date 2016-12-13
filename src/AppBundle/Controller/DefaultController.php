@@ -53,7 +53,7 @@ class DefaultController extends Controller
                 $cargo = $culqi->Cargos->create(array(
                     "token"=> $token,
                     "moneda"=> "PEN",
-                    "monto"=> 200,
+                    "monto"=> 100,
                     "descripcion"=> $datos->descripcion,
                     "pedido"=> $datos->orden,
                     "codigo_pais"=> "PE",

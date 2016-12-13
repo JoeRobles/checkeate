@@ -4,13 +4,13 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-xs-4" style="text-align: center; margin: 1em 0;">
+        <div class="col-md-4" style="text-align: center; margin: 1em 0;">
             <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
             <a href="/{{ file.uploaddir }}/{{ file.path }}">
                 <img style="vertical-align: middle;" src="{{ asset('images/portada-libro1.png') }}" height="290" alt="Libro">
             </a>
         </div>
-        <div class="col-xs-8">
+        <div class="col-md-8">
             <h1>Cáncer el enemigo oculto</h1>
             <h3><a href="/{{ file.uploaddir }}/{{ file.path }}">Descarga la muestra aquí</a></h3>
             <p class="text-justify">Dr. Luis Antonio Pacora Camargo, médico especialista en cirugía oncológica,
@@ -31,7 +31,7 @@
             orden: '{{ orden }}',
             moneda: 'PEN',
             descripcion: 'Pago del Libro',
-            monto: 200,
+            monto: 100,
             guardar: false
         };
         Culqi.configurar(datos);
