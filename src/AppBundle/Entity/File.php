@@ -395,7 +395,7 @@ class File
     {
         if (null !== $this->getFile()) {
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->path = $filename . '.' . $this->getFile()->guessExtension();
+            $this->path = $filename . '.' . $this->getFile()->getClientOriginalExtension();
             $this->setOriginal($this->getFile()->getClientOriginalName());
         }
     }

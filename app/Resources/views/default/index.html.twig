@@ -4,22 +4,17 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-4">
-            <p><img src="{{ asset('images/portada-libro.png') }}" height="290" alt="Libro"></p>
-            <p></p>
+        <div class="col-xs-4">
+            <p><img src="{{ asset('images/portada-libro1.png') }}" height="290" alt="Libro"></p>
         </div>
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Excepteur sint</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <button id="buy" class="btn btn-primary btn-lg">Comprar ahora</button>
-                </div>
-                <div class="col-md-12"></div>
-            </div>
+        <div class="col-xs-8">
+            <h1>Cáncer el enemigo oculto</h1>
+            <p class="text-justify">Dr. Luis Antonio Pacora Camargo, médico especialista en cirugía oncológica,
+                cuenta con maestría y doctorado en medicina, así mismo MBA en Gerencia Internacional y Maestría
+                en Liderazgo. Actualmente CEO del proyecto <a href="http://www.facebook.com/checkeate">CHECKEATE</a> (www.facebook.com/checkeate), proyecto que
+                busca ayudar a disminuir las víctimas de las enfermedades crónica a través de difundir la
+                cultura del diagnóstico precoz. </p>
+            <button id="buy" class="btn btn-primary btn-lg">Comprar ahora</button>
         </div>
     </div>
 {% endblock %}
@@ -58,10 +53,6 @@
                 fillForm(Culqi, datos);
 
                 function fillForm(Culqi, datos) {
-                    console.log('datos');
-                    console.log(datos);
-                    console.log('JSON.stringify(datos)');
-                    console.log(JSON.stringify(datos));
                     $('#token').val(Culqi.token.id);
                     $('#datos').val(JSON.stringify(datos));
                     setTimeout(function(){
