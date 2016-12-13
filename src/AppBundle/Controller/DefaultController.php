@@ -15,9 +15,16 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $orden = uniqid(mt_rand(), true);
+        $em = $this->getDoctrine()->getManager();
+        $file = $em->getRepository('AppBundle:File')->findById(1);
 
-        return $this->render('default/index.html.twig', array('orden' => $orden));
+        return $this->render(
+            'default/index.html.twig',
+            array(
+                'orden' => uniqid(mt_rand(), true),
+                'file' =>  $file[0]
+            )
+        );
     }
 
     /**

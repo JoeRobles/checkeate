@@ -4,11 +4,15 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-xs-4">
-            <p><img src="{{ asset('images/portada-libro1.png') }}" height="290" alt="Libro"></p>
+        <div class="col-xs-4" style="text-align: center; margin: 1em 0;">
+            <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+            <a href="/{{ file.uploaddir }}/{{ file.path }}">
+                <img style="vertical-align: middle;" src="{{ asset('images/portada-libro1.png') }}" height="290" alt="Libro">
+            </a>
         </div>
         <div class="col-xs-8">
             <h1>Cáncer el enemigo oculto</h1>
+            <h3><a href="/{{ file.uploaddir }}/{{ file.path }}">Descarga la muestra aquí</a></h3>
             <p class="text-justify">Dr. Luis Antonio Pacora Camargo, médico especialista en cirugía oncológica,
                 cuenta con maestría y doctorado en medicina, así mismo MBA en Gerencia Internacional y Maestría
                 en Liderazgo. Actualmente CEO del proyecto <a href="http://www.facebook.com/checkeate">CHECKEATE</a> (www.facebook.com/checkeate), proyecto que
